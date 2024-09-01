@@ -1774,22 +1774,26 @@ if(preg_match('/havePaiedWeSwap(.*)/',$data,$match)) {
         foreach($vraylink as $vray_link){
         $acc_text = "
         
-😍 سفارش جدید شما
-📡 پروتکل: $protocol
+✅ خرید موفقیت آمیز 
 🔮 نام سرویس: $remark
 🔋حجم سرویس: $volume گیگ
-⏰ مدت سرویس: $days روز⁮⁮ ⁮⁮
-" . ($botState['configLinkState'] != "off"?"
-💝 config : <code>$vray_link</code>":"");
+⏰ مدت سرویس: $days روز⁮⁮ 
+➖➖➖➖➖➖➖➖➖➖➖➖
+" . ($botState['configLinkState'] != "off"?"💝 با یک بار ضربه روی لینک زیر آن را کپی و داخل نرم افزار ادد کنید :👇
 
-if($botState['subLinkState'] == "on") $acc_text .= "
-
-🔋 Volume web: <code> $botUrl"."search.php?id=".$uniqid."</code>
-
-
-🌐 subscription : <code>$subLink</code>
+<code>$vray_link</code>":"");
         
-        ";
+if($botState['subLinkState'] == "on") $acc_text .= "
+        
+➖➖➖➖➖➖➖➖➖➖➖➖
+❌برای اتصال با اندروید  :
+<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
+⭕️ برای اتصال با ایفون IOS  :
+<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+                    ";
               
             $file = RandomString() .".png";
             $ecc = 'L';
@@ -2935,19 +2939,26 @@ if(preg_match('/payCustomWithWallet(.*)/',$data, $match)){
     define('IMAGE_HEIGHT',540);
     foreach($vraylink as $vray_link){
         $acc_text = "
-😍 سفارش جدید شما
-📡 پروتکل: $protocol
+✅ خرید موفقیت آمیز 
 🔮 نام سرویس: $remark
 🔋حجم سرویس: $volume گیگ
-⏰ مدت سرویس: $days روز⁮⁮ ⁮⁮
-" . ($botState['configLinkState'] != "off"?"
-💝 config : <code>$vray_link</code>":"");
+⏰ مدت سرویس: $days روز⁮⁮ 
+➖➖➖➖➖➖➖➖➖➖➖➖
+" . ($botState['configLinkState'] != "off"?"💝 با یک بار ضربه روی لینک زیر آن را کپی و داخل نرم افزار ادد کنید :👇
+
+<code>$vray_link</code>":"");
+ 
 if($botState['subLinkState'] == "on") $acc_text .= "
-
-🔋 Volume web: <code> $botUrl"."search.php?id=".$uniqid."</code>
-
-
-🌐 subscription : <code>$subLink</code>"; 
+        
+➖➖➖➖➖➖➖➖➖➖➖➖
+❌برای اتصال با اندروید  :
+<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
+⭕️ برای اتصال با ایفون IOS  :
+<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+                "; 
     
         $file = RandomString() .".png";
         $ecc = 'L';
@@ -3313,18 +3324,26 @@ if(preg_match('/accCustom(.*)/',$data, $match) and $text != $buttonValues['cance
 
     foreach($vraylink as $vray_link){
         $acc_text = "
-😍 سفارش جدید شما
-📡 پروتکل: $protocol
+✅ خرید موفقیت آمیز 
 🔮 نام سرویس: $remark
 🔋حجم سرویس: $volume گیگ
-⏰ مدت سرویس: $days روز⁮⁮ ⁮⁮
-" . ($botState['configLinkState'] != "off"?"
-💝 config : <code>$vray_link</code>":"");
+⏰ مدت سرویس: $days روز⁮⁮ 
+➖➖➖➖➖➖➖➖➖➖➖➖
+" . ($botState['configLinkState'] != "off"?"💝 با یک بار ضربه روی لینک زیر آن را کپی و داخل نرم افزار ادد کنید :👇
+
+<code>$vray_link</code>":"");
+        
 if($botState['subLinkState'] == "on") $acc_text .= "
-
-🔋 Volume web: <code> $botUrl"."search.php?id=".$uniqid."</code>
-
-\n🌐 subscription : <code>$subLink</code>";
+        
+➖➖➖➖➖➖➖➖➖➖➖➖
+❌برای اتصال با اندروید  :
+<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
+⭕️ برای اتصال با ایفون IOS  :
+<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+                ";
     
         $file = RandomString() .".png";
         $ecc = 'L';
@@ -3599,18 +3618,26 @@ if(preg_match('/payWithWallet(.*)/',$data, $match)){
             $vraylink = getConnectionLink($server_id, $uniqid, $protocol, $remark, $port, $netType, $inbound_id, $rahgozar, $customPath, $customPort, $customSni);
             foreach($vraylink as $vray_link){
                 $acc_text = "
-😍 سفارش جدید شما
-📡 پروتکل: $protocol
+✅ خرید موفقیت آمیز 
 🔮 نام سرویس: $remark
 🔋حجم سرویس: $volume گیگ
-⏰ مدت سرویس: $days روز⁮⁮ ⁮⁮
-" . ($botState['configLinkState'] != "off"?"
-💝 config : <code>$vray_link</code>":"");
+⏰ مدت سرویس: $days روز⁮⁮ 
+➖➖➖➖➖➖➖➖➖➖➖➖
+" . ($botState['configLinkState'] != "off"?"💝 با یک بار ضربه روی لینک زیر آن را کپی و داخل نرم افزار ادد کنید :👇
+
+<code>$vray_link</code>":"");
+                
 if($botState['subLinkState'] == "on") $acc_text .= "
-
-🔋 Volume web: <code> $botUrl"."search.php?id=".$uniqid."</code>
-
-\n🌐 subscription : <code>$subLink</code>";
+                
+➖➖➖➖➖➖➖➖➖➖➖➖
+❌برای اتصال با اندروید  :
+<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
+⭕️ برای اتصال با ایفون IOS  :
+<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+                "; 
             
                 $file = RandomString() .".png";
                 $ecc = 'L';
@@ -4097,18 +4124,26 @@ if(preg_match('/accept(.*)/',$data, $match) and $text != $buttonValues['cancel']
             $vraylink = getConnectionLink($server_id, $uniqid, $protocol, $remark, $port, $netType, $inbound_id, $rahgozar, $customPath, $customPort, $customSni);
             foreach($vraylink as $vray_link){
                 $acc_text = "
-😍 سفارش جدید شما
-📡 پروتکل: $protocol
+✅ خرید موفقیت آمیز 
 🔮 نام سرویس: $remark
 🔋حجم سرویس: $volume گیگ
-⏰ مدت سرویس: $days روز
-" . ($botState['configLinkState'] != "off"?"
-💝 config : <code>$vray_link</code>":"");
+⏰ مدت سرویس: $days روز⁮⁮ 
+➖➖➖➖➖➖➖➖➖➖➖➖
+" . ($botState['configLinkState'] != "off"?"💝 با یک بار ضربه روی لینک زیر آن را کپی و داخل نرم افزار ادد کنید :👇
+
+<code>$vray_link</code>":"");
+                
 if($botState['subLinkState'] == "on") $acc_text .= "
-
-🔋 Volume web: <code> $botUrl"."search.php?id=".$uniqid."</code>
-
-\n🌐 subscription : <code>$subLink</code>";
+                
+➖➖➖➖➖➖➖➖➖➖➖➖
+❌برای اتصال با اندروید  :
+<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
+⭕️ برای اتصال با ایفون IOS  :
+<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+                ";
             
                 $file = RandomString() .".png";
                 $ecc = 'L';
@@ -5537,18 +5572,26 @@ if(preg_match('/freeTrial(\d+)/',$data,$match)) {
     define('IMAGE_HEIGHT',540);
     foreach($vraylink as $vray_link){
         $acc_text = "
-😍 سفارش جدید شما
-📡 پروتکل: $protocol
+✅ خرید موفقیت آمیز 
 🔮 نام سرویس: $remark
 🔋حجم سرویس: $volume گیگ
-⏰ مدت سرویس: $days روز
-" . ($botState['configLinkState'] != "off"?"
-💝 config : <code>$vray_link</code>":"");
+⏰ مدت سرویس: $days روز⁮⁮ 
+➖➖➖➖➖➖➖➖➖➖➖➖
+" . ($botState['configLinkState'] != "off"?"💝 با یک بار ضربه روی لینک زیر آن را کپی و داخل نرم افزار ادد کنید :👇
+
+<code>$vray_link</code>":"");
+        
 if($botState['subLinkState'] == "on") $acc_text .= "
-
-🔋 Volume web: <code> $botUrl"."search.php?id=".$uniqid."</code>
-
-\n🌐 subscription : <code>$subLink</code>";
+        
+➖➖➖➖➖➖➖➖➖➖➖➖
+❌برای اتصال با اندروید  :
+<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
+⭕️ برای اتصال با ایفون IOS  :
+<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
+➖➖➖➖➖➖➖➖➖➖➖➖
+        ";
     
         $file = RandomString().".png";
         $ecc = 'L'; 
