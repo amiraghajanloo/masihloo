@@ -253,19 +253,19 @@ function getMainKeys(){
                 ['text'=>$buttonValues['request_agency'],'callback_data'=>"requestAgency"]
                 ]:
                 []),
-            (($botState['sellState'] == "on" || $from_id == $admin || $userInfo['isAdmin'] == true)?
-                [['text'=>$buttonValues['my_subscriptions'],'callback_data'=>'mySubscriptions'],['text'=>$buttonValues['buy_subscriptions'],'callback_data'=>"buySubscription"]]
-                :
-                [['text'=>$buttonValues['my_subscriptions'],'callback_data'=>'mySubscriptions']]
-                    )
-            ]);
-    }
+                (
+                    ($botState['testAccount'] == "on")?[['text'=>$buttonValues['test_account'],'callback_data'=>"getTestAccount"]]:
+                        []
+                    ),
+                    (($botState['sellState'] == "on" || $from_id == $admin || $userInfo['isAdmin'] == true)?
+                    [['text'=>$buttonValues['my_subscriptions'],'callback_data'=>'mySubscriptions'],['text'=>$buttonValues['buy_subscriptions'],'callback_data'=>"buySubscription"]]
+                    :
+                    [['text'=>$buttonValues['my_subscriptions'],'callback_data'=>'mySubscriptions']]
+                        )
+                ]);
+    } 
     $mainKeys = array_merge($mainKeys,[
-        (
-            ($botState['testAccount'] == "on")?[['text'=>$buttonValues['test_account'],'callback_data'=>"getTestAccount"]]:
-                []
-            ),
-        [['text'=>$buttonValues['sharj'],'callback_data'=>"increaseMyWallet"]],
+
         [['text'=>$buttonValues['invite_friends'],'callback_data'=>"inviteFriends"],['text'=>$buttonValues['my_info'],'callback_data'=>"myInfo"]],
         (($botState['sharedExistence'] == "on" && $botState['individualExistence'] == "on")?
         [['text'=>$buttonValues['shared_existence'],'callback_data'=>"availableServers"],['text'=>$buttonValues['individual_existence'],'callback_data'=>"availableServers2"]]:[]),
@@ -274,10 +274,10 @@ function getMainKeys(){
         (($botState['sharedExistence'] != "on" && $botState['individualExistence'] == "on")?
             [['text'=>$buttonValues['individual_existence'],'callback_data'=>"availableServers2"]]:[]
         ),
-        [['text'=>$buttonValues['application_links'],'callback_data'=>"reciveApplications"],['text'=>$buttonValues['my_tickets'],'callback_data'=>"supportSection"]],
-        (($botState['searchState']=="on" || $from_id == $admin || $userInfo['isAdmin'] == true)?
-            [['text'=>$buttonValues['search_config'],'callback_data'=>"showUUIDLeft"]]
-            :[]),
+        [['text'=>$buttonValues['application_links'],'callback_data'=>"reciveApplications"]],
+        [['text' => '🟢🟢مشاهده وضعیت سرورها 🟢🟢 ', 'url' => 'http://bot.masihloo.click:3001/status/masihloo']],
+
+
     ]);
     $stmt = $connection->prepare("SELECT * FROM `setting` WHERE `type` LIKE '%MAIN_BUTTONS%'");
     $stmt->execute();
@@ -295,6 +295,7 @@ function getMainKeys(){
             }
         }
     }
+    
     array_push($mainKeys,$temp);
     if($from_id == $admin || $userInfo['isAdmin'] == true) array_push($mainKeys,[['text'=>"مدیریت ربات ⚙️",'callback_data'=>"managePanel"]]);
     return json_encode(['inline_keyboard'=>$mainKeys]); 
@@ -1057,6 +1058,8 @@ function getBotReportKeys(){
     $allUsers = $stmt->get_result()->num_rows;
     $stmt->close();
 
+   
+
     $stmt = $connection->prepare("SELECT * FROM `orders_list`");
     $stmt->execute();
     $allOrders = $stmt->get_result()->num_rows;
@@ -1081,8 +1084,12 @@ function getBotReportKeys(){
     $stmt->execute();
     $totalRewards = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
     $stmt->close();
-    
-    
+
+    $stmt = $connection->prepare("SELECT SUM(wallet) as total FROM `users` WHERE `isAdmin` = '0'");
+    $stmt->execute();
+    $sumuserwallet = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
+    $stmt->close();
+
     $persian = explode("-",jdate("Y-n-1", time()));
     $gregorian = jalali_to_gregorian($persian[0], $persian[1], $persian[2]);
     $date =  $gregorian[0] . "-" . $gregorian[1] . "-" . $gregorian[2];
@@ -1093,25 +1100,106 @@ function getBotReportKeys(){
     $monthReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
     $stmt->close();
     
-    $dayTime = strtotime("-" . (date("w")+1) . " days");
+    $lastMonth = strtotime("-1 month", $dayTime);
+    $stmt = $connection->prepare("SELECT SUM(price) as total FROM `pays` WHERE `request_date` > ? AND `request_date` <= ? AND (`state` = 'paid' OR `state` = 'approved')");
+    $stmt->bind_param("ii", $lastMonth, $dayTime);
+    $stmt->execute();
+    $lastMonthReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
+    $stmt->close();
+
+
+    $dayTime = strtotime("last Friday");
+    // کم کردن یک روز از تاریخ
+    $dayTime = strtotime("+1 day", $dayTime);
     $stmt = $connection->prepare("SELECT SUM(price) as total FROM `pays` WHERE `request_date` > ?  AND (`state` = 'paid' OR `state` = 'approved')");
     $stmt->bind_param("i", $dayTime);
     $stmt->execute();
     $weekReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
     $stmt->close();
-    
-    $dayTime = strtotime("today");
-    $stmt = $connection->prepare("SELECT SUM(price) as total FROM `pays` WHERE `request_date` > ? AND (`state` = 'paid' OR `state` = 'approved')");
-    $stmt->bind_param("i", $dayTime);
-    $stmt->execute();
-    $dayReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
-    $stmt->close();
+
+
+   // پیدا کردن روز اول هفته جاری
+   $today = strtotime("today");
+   $firstDayOfCurrentWeek = strtotime("last Friday", $today);
+   $firstDayOfCurrentWeek = strtotime("+1 day", $firstDayOfCurrentWeek);
+
+   // پیدا کردن تاریخ 7 روز قبل از روز اول هفته جاری
+   $sevenDaysAgo = strtotime("-7 days", $firstDayOfCurrentWeek);
+   // تابع SQL
+   $stmt = $connection->prepare("SELECT SUM(price) as total FROM `pays` WHERE `request_date` > ? AND `request_date` <= ? AND (`state` = 'paid' OR `state` = 'approved')");
+   $stmt->bind_param("ii", $sevenDaysAgo, $firstDayOfCurrentWeek);
+   $stmt->execute();
+   $lastweekReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
+   $stmt->close();
+
+   
+    // پیدا کردن تاریخ و زمان 00:00 روز جاری
+   $todayStart = strtotime("midnight");
+
+   // پیدا کردن تاریخ و زمان 23:59 روز جاری
+   $todayEnd = strtotime("23:59", $todayStart);
+
+   // تابع SQL
+   $stmt = $connection->prepare("SELECT SUM(price) as total FROM `pays` WHERE `request_date` >= ? AND `request_date` <= ? AND (`state` = 'paid' OR `state` = 'approved')");
+   $stmt->bind_param("ii", $todayStart, $todayEnd);
+   $stmt->execute();
+   $dayReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
+   $stmt->close();
+
+   // تاریخ و زمان 00:00 امروز
+$todayStart = strtotime("today");
+
+// تاریخ و زمان 00:00 یک روز پیش
+$yesterdayStart = strtotime("-1 day", $todayStart);
+
+// تاریخ و زمان 23:59:59 امروز
+$todayEnd = strtotime("tomorrow", $todayStart) - 1;
+
+// تاریخ و زمان 23:59:59 یک روز پیش
+$yesterdayEnd = strtotime("tomorrow", $yesterdayStart) - 1;
+
+$stmt = $connection->prepare("SELECT SUM(price) as total FROM `pays` WHERE `request_date` >= ? AND `request_date` <= ? AND (`state` = 'paid' OR `state` = 'approved')");
+$stmt->bind_param("ii", $yesterdayStart, $yesterdayEnd);
+$stmt->execute();
+$yesterdayReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
+$stmt->close();
+
+   // تاریخ و زمان 00:00 امروز
+   $todayStart = strtotime("today");
+
+   // تاریخ و زمان 00:00 یک روز پیش
+   $yesterdayStart = strtotime("-2 day", $todayStart);
+   
+   // تاریخ و زمان 23:59:59 امروز
+   $todayEnd = strtotime("tomorrow", $todayStart) - 1;
+   
+   // تاریخ و زمان 23:59:59 یک روز پیش
+   $yesterdayEnd = strtotime("tomorrow", $yesterdayStart) - 1;
+   
+   $stmt = $connection->prepare("SELECT SUM(price) as total FROM `pays` WHERE `request_date` >= ? AND `request_date` <= ? AND (`state` = 'paid' OR `state` = 'approved')");
+   $stmt->bind_param("ii", $yesterdayStart, $yesterdayEnd);
+   $stmt->execute();
+   $paridayReward = number_format($stmt->get_result()->fetch_assoc()['total']) . " تومان";
+   $stmt->close();
+
+   $stmt = $connection->prepare("SELECT * FROM `orders_list` WHERE DATEDIFF(`expire_date`, CURDATE()) = 1");
+   $stmt->execute();
+   $expireeUsers = $stmt->get_result()->num_rows;
+   $stmt->close();
     
     return json_encode(['inline_keyboard'=>[
         [
             ['text'=>$allUsers,'callback_data'=>'wizwizch'],
             ['text'=>"تعداد کل کاربران",'callback_data'=>'wizwizch']
             ],
+        [
+            ['text'=>$expireeUsers,'callback_data'=>'wizwizch'],
+            ['text'=>"در حال انقضا",'callback_data'=>'wizwizch']
+            ],
+        [
+            ['text'=>$sumuserwallet,'callback_data'=>'wizwizch'],
+            ['text'=>"مجموع موجودی کاربران",'callback_data'=>'wizwizch']
+        ],
         [
             ['text'=>$allOrders,'callback_data'=>'wizwizch'],
             ['text'=>"کل محصولات خریداری شده",'callback_data'=>'wizwizch']
@@ -1129,24 +1217,40 @@ function getBotReportKeys(){
             ['text'=>"تعداد پلن ها",'callback_data'=>'wizwizch']
             ],
         [
-            ['text'=>$totalRewards,'callback_data'=>'wizwizch'],
-            ['text'=>"درآمد کل",'callback_data'=>'wizwizch']
-            ],
-        [
             ['text'=>$dayReward,'callback_data'=>'wizwizch'],
             ['text'=>"درآمد امروز",'callback_data'=>'wizwizch']
+            ],
+        [
+            ['text'=>$yesterdayReward,'callback_data'=>'wizwizch'],
+            ['text'=>"درآمد دیروز",'callback_data'=>'wizwizch']
+            ],
+        [
+            ['text'=>$paridayReward,'callback_data'=>'wizwizch'],
+            ['text'=>"درآمد پریروز",'callback_data'=>'wizwizch']
             ],
         [
             ['text'=>$weekReward,'callback_data'=>'wizwizch'],
             ['text'=>"درآمد هفته",'callback_data'=>'wizwizch']
             ],
         [
+            ['text'=>$lastweekReward,'callback_data'=>'wizwizch'],
+            ['text'=>" درآمد هفته قبل",'callback_data'=>'wizwizch']
+            ],
+        [
             ['text'=>$monthReward,'callback_data'=>'wizwizch'],
             ['text'=>"درآمد ماه",'callback_data'=>'wizwizch']
             ],
         [
+            ['text' => $lastMonthReward, 'callback_data' => 'wizwizch'],
+            ['text' => "درآمد ماه قبل", 'callback_data' => 'wizwizch']
+        ],
+        [
+            ['text'=>$totalRewards,'callback_data'=>'wizwizch'],
+            ['text'=>"درآمد کل",'callback_data'=>'wizwizch']
+        ],
+        [
             ['text'=>"برگشت به مدیریت",'callback_data'=>'managePanel']
-            ]
+        ]
         ]]);
 }
 function getAdminsKeys(){
