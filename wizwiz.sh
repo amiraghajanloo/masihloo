@@ -102,9 +102,9 @@ sudo systemctl restart apache2.service
 
 wait
 
-git clone https://github.com/amiraghajanloo/wiz9.git /var/www/html/wizwizxui-timebot
-sudo chown -R www-data:www-data /var/www/html/wizwizxui-timebot/
-sudo chmod -R 755 /var/www/html/wizwizxui-timebot/
+git clone https://github.com/amiraghajanloo/masihloo.git /var/www/html/masihloo
+sudo chown -R www-data:www-data /var/www/html/masihloo/
+sudo chmod -R 755 /var/www/html/masihloo/
 echo -e "\n\033[33mWizWiz config and script have been installed successfully\033[0m"
 
 wait
