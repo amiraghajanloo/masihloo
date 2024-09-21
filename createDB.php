@@ -157,6 +157,7 @@ $connection->query("CREATE TABLE `server_config` (
   `ip` text NOT NULL,
   `sni` varchar(254) NOT NULL,
   `path2` text NOT NULL,
+  `host2` text NOT NULL,
   `header_type` enum('none','http') NOT NULL,
   `request_header` text NOT NULL,
   `response_header` text NOT NULL,
