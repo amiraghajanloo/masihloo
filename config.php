@@ -3765,7 +3765,7 @@ function getNewHeaders($netType, $request_header, $response_header, $type){
     return $headers;
 
 }
-function getConnectionLink($server_id, $uniqid, $protocol, $remark, $port, $netType, $inbound_id = 0, $rahgozar = false, $customPath = false, $customPort = 0, $customSni = null){
+function getConnectionLink($server_id, $uniqid, $protocol, $remark, $port, $netType, $inbound_id = 0, $rahgozar = false, $pathh, $customPath = false, $customPort = 0, $customSni = null){
     global $connection;
     $stmt = $connection->prepare("SELECT * FROM server_config WHERE id=?");
     $stmt->bind_param("i", $server_id);
@@ -3779,6 +3779,7 @@ function getConnectionLink($server_id, $uniqid, $protocol, $remark, $port, $netT
     $header_type = $server_info['header_type'];
     $request_header = $server_info['request_header'];
     $response_header = $server_info['response_header'];
+    $path2 = $server_info['path2'];
     $cookie = 'Cookie: session='.$server_info['cookie'];
     $serverType = $server_info['type'];
     preg_match("/^Host:(.*)/i",$request_header,$hostMatch);
@@ -4067,7 +4068,7 @@ function getConnectionLink($server_id, $uniqid, $protocol, $remark, $port, $netT
                     $outputlink = "$protocol://$uniqid@$server_ip:$port?type=$netType&security=$tlsStatus{$psting}#$remark";
                 }elseif($netType == 'ws'){
                     if($rahgozar == true)$outputlink = "$protocol://$uniqid@$server_ip:" . ($customPort!=0?$customPort:"443") . "?type=$netType&security=tls&path=" . rawurlencode($path . ($customPath == true?"?ed=2048":"")) . "&encryption=none&host=$host{$psting}#$remark";
-                    else $outputlink = "$protocol://$uniqid@$server_ip:$port?type=$netType&security=$tlsStatus&path=/&host=$host{$psting}#$remark";
+                    else $outputlink = "$protocol://$uniqid@$server_ip:$port?type=$netType&security=$tlsStatus&path=/$path2&host=$host{$psting}#$remark";
                 }
                 elseif($netType == 'kcp')
                     $outputlink = "$protocol://$uniqid@$server_ip:$port?type=$netType&security=$tlsStatus&headerType=$kcpType&seed=$kcpSeed#$remark";
