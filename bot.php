@@ -1785,11 +1785,11 @@ if(preg_match('/havePaiedWeSwap(.*)/',$data,$match)) {
         
 if($botState['subLinkState'] == "on") $acc_text .= "
         
-➖➖➖➖➖➖➖➖➖➖➖➖
-❌برای اتصال با اندروید  :
-<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
-⭕️ برای اتصال با ایفون IOS  :
-<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+❌❌❌❌❌❌❌❌❌❌❌❌
+فقط از آخرین ورژن نرم افزارها استفاده کنید
+❌❌❌❌👇👇👇❌❌❌❌❌
+✅نرم افزار اندروید  :  <a href='https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en_US&pli=1'>دانلود</a>
+✅نرم افزار آیفون  : <a href='https://apps.apple.com/us/app/streisand/id6450534064'>دانلود</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
 🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
@@ -2950,11 +2950,11 @@ if(preg_match('/payCustomWithWallet(.*)/',$data, $match)){
  
 if($botState['subLinkState'] == "on") $acc_text .= "
         
-➖➖➖➖➖➖➖➖➖➖➖➖
-❌برای اتصال با اندروید  :
-<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
-⭕️ برای اتصال با ایفون IOS  :
-<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+❌❌❌❌❌❌❌❌❌❌❌❌
+فقط از آخرین ورژن نرم افزارها استفاده کنید
+❌❌❌❌👇👇👇❌❌❌❌❌
+✅نرم افزار اندروید  :  <a href='https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en_US&pli=1'>دانلود</a>
+✅نرم افزار آیفون  : <a href='https://apps.apple.com/us/app/streisand/id6450534064'>دانلود</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
 🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
@@ -3335,11 +3335,11 @@ if(preg_match('/accCustom(.*)/',$data, $match) and $text != $buttonValues['cance
         
 if($botState['subLinkState'] == "on") $acc_text .= "
         
-➖➖➖➖➖➖➖➖➖➖➖➖
-❌برای اتصال با اندروید  :
-<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
-⭕️ برای اتصال با ایفون IOS  :
-<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+❌❌❌❌❌❌❌❌❌❌❌❌
+فقط از آخرین ورژن نرم افزارها استفاده کنید
+❌❌❌❌👇👇👇❌❌❌❌❌
+✅نرم افزار اندروید  :  <a href='https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en_US&pli=1'>دانلود</a>
+✅نرم افزار آیفون  : <a href='https://apps.apple.com/us/app/streisand/id6450534064'>دانلود</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
 🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
@@ -3629,11 +3629,11 @@ if(preg_match('/payWithWallet(.*)/',$data, $match)){
                 
 if($botState['subLinkState'] == "on") $acc_text .= "
                 
-➖➖➖➖➖➖➖➖➖➖➖➖
-❌برای اتصال با اندروید  :
-<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
-⭕️ برای اتصال با ایفون IOS  :
-<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+❌❌❌❌❌❌❌❌❌❌❌❌
+فقط از آخرین ورژن نرم افزارها استفاده کنید
+❌❌❌❌👇👇👇❌❌❌❌❌
+✅نرم افزار اندروید  :  <a href='https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en_US&pli=1'>دانلود</a>
+✅نرم افزار آیفون  : <a href='https://apps.apple.com/us/app/streisand/id6450534064'>دانلود</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
 🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
@@ -4135,11 +4135,11 @@ if(preg_match('/accept(.*)/',$data, $match) and $text != $buttonValues['cancel']
                 
 if($botState['subLinkState'] == "on") $acc_text .= "
                 
-➖➖➖➖➖➖➖➖➖➖➖➖
-❌برای اتصال با اندروید  :
-<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
-⭕️ برای اتصال با ایفون IOS  :
-<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+❌❌❌❌❌❌❌❌❌❌❌❌
+فقط از آخرین ورژن نرم افزارها استفاده کنید
+❌❌❌❌👇👇👇❌❌❌❌❌
+✅نرم افزار اندروید  :  <a href='https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en_US&pli=1'>دانلود</a>
+✅نرم افزار آیفون  : <a href='https://apps.apple.com/us/app/streisand/id6450534064'>دانلود</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
 🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
@@ -5583,11 +5583,11 @@ if(preg_match('/freeTrial(\d+)/',$data,$match)) {
         
 if($botState['subLinkState'] == "on") $acc_text .= "
         
-➖➖➖➖➖➖➖➖➖➖➖➖
-❌برای اتصال با اندروید  :
-<a href='t.me/learn_masih/15'>حتما مشاهده کنید</a>
-⭕️ برای اتصال با ایفون IOS  :
-<a href='t.me/learn_masih/9'>حتما مشاهده کنید</a>
+❌❌❌❌❌❌❌❌❌❌❌❌
+فقط از آخرین ورژن نرم افزارها استفاده کنید
+❌❌❌❌👇👇👇❌❌❌❌❌
+✅نرم افزار اندروید  :  <a href='https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en_US&pli=1'>دانلود</a>
+✅نرم افزار آیفون  : <a href='https://apps.apple.com/us/app/streisand/id6450534064'>دانلود</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
 🔋مشاهده حجم و زمان اکانت : <a href='$botUrl"."search.php?id=".$uniqid."'>کلیک کنید</a>
 ➖➖➖➖➖➖➖➖➖➖➖➖
