@@ -275,7 +275,8 @@ function getMainKeys(){
             [['text'=>$buttonValues['individual_existence'],'callback_data'=>"availableServers2"]]:[]
         ),
         [['text'=>$buttonValues['application_links'],'callback_data'=>"reciveApplications"]],
-        [['text' => '🟢🟢مشاهده وضعیت سرورها 🟢🟢 ', 'url' => 'http://bot.masihloo.click:3001/status/masihloo']],
+        [['text' => '🟢 مشاهده وضعیت سرورها 🟢 ', 'url' => 'http://bot.masihloo.click:3001/status/masihloo']],
+				[['text' => '🚀 تست سرعت 🚀', 'url' => 't.me/masihloo_bot/Speedtest']],
 
 
     ]);
